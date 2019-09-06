@@ -16,14 +16,14 @@ public class User {
 	private Date creationDate; //创建时间
 	private Integer modifyBy;     //更新者
 	private Date modifyDate;   //更新时间
-	private String roleName;
+	private String userRoleName;
 
-	public String getRoleName() {
-		return roleName;
+	public String getUserRoleName() {
+		return userRoleName;
 	}
 
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
+	public void setUserRoleName(String userRoleName) {
+		this.userRoleName = userRoleName;
 	}
 
 	public Integer getId() {
@@ -121,7 +121,7 @@ public class User {
 				", creationDate=" + creationDate +
 				", modifyBy=" + modifyBy +
 				", modifyDate=" + modifyDate +
-				", roleName='" + roleName + '\'' +
+				", userRoleName='" + userRoleName + '\'' +
 				'}';
 	}
 }

@@ -49,4 +49,32 @@ public interface UserMapper {
      * @return
      */
     List<User> findUserListByGender(int i);
+
+    /**
+     * 根据用户名和角色id查询用户
+     * @param name
+     * @param roleId
+     * @return
+     */
+    User findUserByUserNameAndUserRole2(@Param("userName") String name,@Param("userRole") int roleId);
+
+    /**
+     * 增加用户信息
+     * @return
+     */
+    int addUser();
+
+    /**
+     * 根据用户信息修改用户
+     * @param user
+     * @return
+     */
+    int updateUserNameAndUserCode(User user);
+
+    /**
+     * 根据姓名删除用户
+     * @param name
+     * @return
+     */
+    int deleteUserByUserName(@Param("userName") String name);
 }

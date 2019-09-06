@@ -12,7 +12,7 @@
     <!--parameterType:入参类型-->
     <select id="findUserByUserName" resultType="user" parameterType="String" >
         select * from smbms_user where userName like Concat('%',#{name},'%');
-    </select>
+</select>
     <!-- User findUserByUserNameAndUserRole(User user);-->
     <!--使用用户来传递参数 参数直接可以使用对象中的字段获取-->
     <select id="findUserByUserNameAndUserRole" resultType="user" parameterType="user">
@@ -45,6 +45,36 @@
     <select id="findUserListByGender" resultType="user" parameterType="int">
         select * from smbms_user where userName like Concat('%',#{i},'%');
     </select>
+    <resultMap id="userList" type="user">
+        <!-- 用来提升映射性能的 -->
+        <id property="id" column="id"></id>
+        <result column="roleName" property="userRoleName"></result>
+    </resultMap>
+    <!--User findUserByUserNameAndUserRole2(String name, int roleId);-->
+    <select id="findUserByUserNameAndUserRole2" resultMap="userList" >
+        select su.*,sr.roleName
+          from smbms_user su,smbms_role sr
+            where sr.id = su.userRole
+              and userName like Concat('%',#{userName},'%')
+                and  su.userRole = #{userRole}
 
+    </select>
 
+    <!--int addUser();-->
+    <!-- 增删改不用写返回值类型  自动返回 -->
+    <insert id="addUser" >
+      insert  into smbms_user(userCode,userName,userPassword,gender,birthday,phone,address,userRole,
+                                createdBy,creationDate,modifyBy,modifyDate)
+        values("gyx","盖逸轩","123456",2,"1999-7-9","18274345632","北大青鸟",2,1,now(),1,now());
+    </insert>
+
+    <!-- int updateUserNameAndUserCode(User user);-->
+    <update id="updateUserNameAndUserCode" parameterType="user">
+        update  smbms_user set userCode = #{userCode},userName=#{userName} where id = #{id}
+    </update>
+
+    <!--int deleteUserByUserName(@Param("userName") String name);-->
+    <delete id="deleteUserByUserName" >
+        delete from smbms_user where userName = #{userName}
+    </delete>
 </mapper>
