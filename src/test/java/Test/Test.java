@@ -6,6 +6,7 @@ import com.githup.mybatis.util.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Test {
 	public static void main(String[] args) {
@@ -34,7 +35,10 @@ public class Test {
 			/* 如果2个参数以内包含2个参数 推荐用注解传参  以上的推荐对象来传   不在一个对象里面的参数用map */
 			User user = userMapper.findUserByUserNameAndUserRole1("敏",2);
 			System.out.println(user);
-
+			List<User> userList = userMapper.findUserListByGender(1);
+			for (User user1 : userList) {
+				System.out.println(user1);
+			}
 			//4.迭代userList
 			/*for (User user : userList) {
 				System.out.println(user);

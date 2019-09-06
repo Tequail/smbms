@@ -16,6 +16,8 @@ public class Test2 {
 			int count = sqlSession.selectOne("userMapper.findCountUser");
 			//执行查询用户的操作  获取list类型的列表
 			List<User> selectList = sqlSession.selectList("userMapper.findUser");
+
+
 			System.out.println("超市会员总共有"+count);
 			for (User user : selectList) {
 				System.out.println(user);

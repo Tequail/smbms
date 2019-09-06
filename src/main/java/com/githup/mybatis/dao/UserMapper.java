@@ -42,4 +42,11 @@ public interface UserMapper {
      * @return
      */
     User findUserByUserNameAndUserRole1(@Param("userName") String name,@Param("userRole") int role);
+
+    /**
+     * 根据用户名查找用户
+     * @param i
+     * @return
+     */
+    List<User> findUserListByGender(int i);
 }

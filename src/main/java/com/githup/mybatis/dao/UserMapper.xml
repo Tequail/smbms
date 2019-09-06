@@ -41,4 +41,10 @@
             where userName like Concat('%',#{userName},'%')
               and  userRole = #{userRole}
     </select>
+    <!--List<User> findUserListByGender(int i);-->
+    <select id="findUserListByGender" resultType="user" parameterType="int">
+        select * from smbms_user where userName like Concat('%',#{i},'%');
+    </select>
+
+
 </mapper>
