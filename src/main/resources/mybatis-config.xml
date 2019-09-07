@@ -6,7 +6,16 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <!-- 根节点 -->
 <configuration>
 	<properties resource="database.properties"></properties>
+	<!--配置自动映射级别
+		none:不映射 手动映射
+		默认:自动映射,但是一旦出现association conlcation 就不会再自动映射了
+		FULL:无论如何都映射
+	-->
+	<settings>
+		<setting name="autoMappingBehavior" value="FULL"/>
+	</settings>
 	<!-- 为pojo起别名 简化返回值类型 -->
+
 	<!--<typeAliases>
 		<typeAlias type="com.githup.mybatis.pojo.User" alias="user"/>
 	</typeAliases>-->

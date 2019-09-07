@@ -18,6 +18,16 @@ public class User {
 	private Date modifyDate;   //更新时间
 	private String userRoleName;
 
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	private Role role;
+
 	public String getUserRoleName() {
 		return userRoleName;
 	}
@@ -122,6 +132,7 @@ public class User {
 				", modifyBy=" + modifyBy +
 				", modifyDate=" + modifyDate +
 				", userRoleName='" + userRoleName + '\'' +
+				", role=" + role +
 				'}';
 	}
 }

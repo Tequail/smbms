@@ -1,6 +1,7 @@
 package Test;
 
 import com.githup.mybatis.dao.UserMapper;
+import com.githup.mybatis.pojo.User;
 import com.githup.mybatis.util.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
@@ -52,13 +53,17 @@ public class Test {
 			int row  = userMapper.updateUserNameAndUserCode(user);*/
 
 			//7.删除操作 删除盖逸轩
-			int row = userMapper.deleteUserByUserName("盖逸轩");
+			/*int row = userMapper.deleteUserByUserName("盖逸轩");
 			if(row > 0){
 				System.out.println("删除成功");
 			}
 			logger.debug("追踪状态信息=====>>"+row);
 			//提交事物
-			sqlSession.commit();
+			sqlSession.commit();*/
+			//8.根据用户名和角色信息查询用户信息和角色信息
+			User user = userMapper.queryUserAndRoleByUserNameAndUserRole("敏",2);
+			System.out.println(user);
+			System.out.println(user.getRole());
 			//5.迭代userList
 			/*for (User user : userList) {
 				System.out.println(user);

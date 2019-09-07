@@ -49,6 +49,7 @@
         <!-- 用来提升映射性能的 -->
         <id property="id" column="id"></id>
         <result column="roleName" property="userRoleName"></result>
+
     </resultMap>
     <!--User findUserByUserNameAndUserRole2(String name, int roleId);-->
     <select id="findUserByUserNameAndUserRole2" resultMap="userList" >
@@ -77,4 +78,30 @@
     <delete id="deleteUserByUserName" >
         delete from smbms_user where userName = #{userName}
     </delete>
+    <resultMap id="resuleList" type="user">
+        <!--替身查询性能-->
+        <id column="id" property="id"></id>
+        <association property="role" javaType="role">
+            <id column="rid" property="id"></id>
+            <result column="rcreatedBy" property="createdBy"></result>
+            <result column="rcreationDate" property="creationDate"></result>
+            <result column="rmodifyBy" property="modifyBy"></result>
+            <result column="rmodifyDate" property="modifyDate"></result>
+        </association>
+    </resultMap>
+    <!--User queryUserAndRoleByUserNameAndUserRole(@Param("userName") String name,@Param("userRole") int role);-->
+    <select id="queryUserAndRoleByUserNameAndUserRole"  resultMap="resuleList">
+        select u.*,
+              r.id as rid,
+              r.roleCode,
+              r.roleName,
+              r.createdBy as rcreatedBy,
+              r.creationDate as rcreationDate,
+              r.modifyBy as rmodifyBy,
+              r.modifyDate as rmodifyDate
+          from smbms_user u,smbms_role r
+            where u.userRole = r.id
+            and  userName like Concat('%',#{userName},'%')
+            and u.userRole = #{userRole}
+    </select>
 </mapper>

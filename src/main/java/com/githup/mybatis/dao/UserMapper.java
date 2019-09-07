@@ -77,4 +77,12 @@ public interface UserMapper {
      * @return
      */
     int deleteUserByUserName(@Param("userName") String name);
+
+    /**
+     * 根据用户名和角色id查询用户信息和角色信息
+     * @param name
+     * @param role
+     * @return
+     */
+    User queryUserAndRoleByUserNameAndUserRole(@Param("userName") String name,@Param("userRole") int role);
 }
