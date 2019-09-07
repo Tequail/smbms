@@ -85,4 +85,12 @@ public interface UserMapper {
      * @return
      */
     User queryUserAndRoleByUserNameAndUserRole(@Param("userName") String name,@Param("userRole") int role);
+
+    /**
+     * 根据用户名和用户id查询用户信息角色信息地址信息
+     * @param name
+     * @param role
+     * @return
+     */
+    User queryUserAndAddressAndRoleByUserNameAndUserRole(@Param("userName") String name,@Param("userRole") int role);
 }

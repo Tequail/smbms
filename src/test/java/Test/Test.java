@@ -1,6 +1,7 @@
 package Test;
 
 import com.githup.mybatis.dao.UserMapper;
+import com.githup.mybatis.pojo.Address;
 import com.githup.mybatis.pojo.User;
 import com.githup.mybatis.util.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
@@ -61,9 +62,17 @@ public class Test {
 			//提交事物
 			sqlSession.commit();*/
 			//8.根据用户名和角色信息查询用户信息和角色信息
-			User user = userMapper.queryUserAndRoleByUserNameAndUserRole("敏",2);
+			/*User user = userMapper.queryUserAndRoleByUserNameAndUserRole("敏",2);
+			System.out.println(user);
+			System.out.println(user.getRole());*/
+			//9. 根据用户名和角色信息来查询用户信息
+			User user = userMapper.queryUserAndAddressAndRoleByUserNameAndUserRole("敏",2);
 			System.out.println(user);
 			System.out.println(user.getRole());
+			for (Address address : user.getAddressList()) {
+				System.out.println(address);
+			}
+
 			//5.迭代userList
 			/*for (User user : userList) {
 				System.out.println(user);

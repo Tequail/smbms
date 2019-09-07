@@ -104,4 +104,27 @@
             and  userName like Concat('%',#{userName},'%')
             and u.userRole = #{userRole}
     </select>
+    <resultMap id="listResult" type="user">
+        <collection property="addressList" ofType="address">
+            <result property="addressDesc" column="addressDesc"></result>
+        </collection>
+    </resultMap>
+    <!-- User queryUserAndAddressAndRoleByUserNameAndUserRole(@Param("userName") String name,@Param("userRole") int role);-->
+    <select id="queryUserAndAddressAndRoleByUserNameAndUserRole" resultMap="listResult">
+        SELECT
+            u.*,r.roleName,a.addressDesc
+        FROM
+            smbms_user u,
+            smbms_role r,
+            smbms_address a
+        WHERE
+            u.userRole = r.id
+        and
+            u.id = a.userId
+        and
+            u.userName like Concat('%',#{userName},'%')
+        and
+            u.userRole = #{userRole}
+
+    </select>
 </mapper>

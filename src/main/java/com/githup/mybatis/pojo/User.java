@@ -1,8 +1,10 @@
 package com.githup.mybatis.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-public class User {
+public class User implements Serializable {
 	private Integer id; //id
 	private String userCode; //用户编码
 	private String userName; //用户名称
@@ -17,25 +19,27 @@ public class User {
 	private Integer modifyBy;     //更新者
 	private Date modifyDate;   //更新时间
 	private String userRoleName;
+	private Role role;
+	private List<Address> addressList;
 
+	public List<Address> getAddressList() {
+		return addressList;
+	}
+	public void setAddressList(List<Address> addressList) {
+		this.addressList = addressList;
+	}
 	public Role getRole() {
 		return role;
 	}
-
 	public void setRole(Role role) {
 		this.role = role;
 	}
-
-	private Role role;
-
 	public String getUserRoleName() {
 		return userRoleName;
 	}
-
 	public void setUserRoleName(String userRoleName) {
 		this.userRoleName = userRoleName;
 	}
-
 	public Integer getId() {
 		return id;
 	}
