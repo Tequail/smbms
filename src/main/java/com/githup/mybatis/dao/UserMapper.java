@@ -92,5 +92,5 @@ public interface UserMapper {
      * @param role
      * @return
      */
-    User queryUserAndAddressAndRoleByUserNameAndUserRole(@Param("userName") String name,@Param("userRole") int role);
+    User queryUserAndAddressAndRoleByUserNameAndUserRole(@Param("userName") String name,@Param("userRole") Integer role);
 }

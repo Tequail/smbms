@@ -66,7 +66,7 @@ public class Test {
 			System.out.println(user);
 			System.out.println(user.getRole());*/
 			//9. 根据用户名和角色信息来查询用户信息
-			User user = userMapper.queryUserAndAddressAndRoleByUserNameAndUserRole("敏",2);
+			User user = userMapper.queryUserAndAddressAndRoleByUserNameAndUserRole("管",1);
 			System.out.println(user);
 			System.out.println(user.getRole());
 			for (Address address : user.getAddressList()) {
